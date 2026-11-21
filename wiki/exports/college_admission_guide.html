@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新手家長升學導航：高中升大學四大管道與重要制度完全指南（116學年度）</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;       /* 深藍 */
+      --primary-light: #3b82f6; /* 亮藍 */
+      --secondary: #0d9488;     /* 松石綠 */
+      --accent: #f59e0b;        /* 琥珀金 */
+      --danger: #ef4444;        /* 警戒紅 */
+      --bg-dark: #0f172a;       /* 暗灰底 */
+      --bg-card: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: #f1f5f9;
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* 頂部導航列 */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn:hover {
+      background: #f8fafc;
+      border-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      color: white;
+    }
+
+    .slide-counter {
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    /* 簡報主舞台 */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    .deck-container {
+      width: 100%;
+      max-width: 1100px;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      min-height: 640px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 頂部進度條 */
+    .progress-bar-bg {
+      width: 100%;
+      height: 4px;
+      background: #e2e8f0;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      width: 8.33%;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 投影片主體 */
+    .slide {
+      display: none;
+      padding: 40px 48px;
+      flex: 1;
+      flex-direction: column;
+      animation: fadeIn 0.35s ease-out;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 投影片頭部 */
+    .slide-header {
+      margin-bottom: 24px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .slide-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      background: #eff6ff;
+      color: var(--primary-light);
+    }
+
+    .badge-amber { background: #fffbeb; color: #d97706; }
+    .badge-green { background: #ecfdf5; color: #059669; }
+    .badge-purple { background: #f5f3ff; color: #7c3aed; }
+    .badge-red { background: #fef2f2; color: #dc2626; }
+
+    .slide-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.3;
+    }
+
+    .slide-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* 投影片內容 */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* 網格卡片佈局 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    /* 重點強調框 */
+    .alert-box {
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-top: 10px;
+    }
+
+    .alert-info {
+      background: #eff6ff;
+      border-left: 4px solid var(--primary-light);
+      color: #1e3a8a;
+    }
+
+    .alert-warning {
+      background: #fffbeb;
+      border-left: 4px solid var(--accent);
+      color: #92400e;
+    }
+
+    .alert-danger {
+      background: #fef2f2;
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+    }
+
+    .alert-success {
+      background: #ecfdf5;
+      border-left: 4px solid var(--secondary);
+      color: #065f46;
+    }
+
+    .alert-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .alert-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .alert-content p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* 表格樣式 */
+    .table-responsive {
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    th {
+      background: #f8fafc;
+      color: var(--text-main);
+      font-weight: 700;
+      padding: 12px 14px;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:nth-child(even) td {
+      background: #fafbfc;
+    }
+
+    /* 投影片底部來源標籤（純文字徽章設計，避免單檔開啟產生 404） */
+    .slide-footer {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .wiki-source-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      padding: 5px 12px;
+      border-radius: 6px;
+      color: #475569;
+      font-weight: 600;
+      border: 1px solid #e2e8f0;
+      user-select: none;
+    }
+
+    .wiki-source-tag span.icon {
+      color: var(--primary-light);
+    }
+
+    .topic-card-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .topic-card-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .topic-path-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      background: #eff6ff;
+      color: var(--primary-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+      margin-left: 6px;
+    }
+
+    /* 大標題封面投影片樣式 */
+    .cover-slide {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .cover-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .cover-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 32px;
+    }
+
+    .cover-highlights {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .cover-pill {
+      background: #eff6ff;
+      color: var(--primary);
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* 流程步驟卡 */
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 16px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      align-items: center;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+    }
+
+    .step-text h5 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .step-text p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* 抽屜目錄彈窗 (Table of Contents Modal) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: white;
+      border-radius: var(--radius);
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 28px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toc-item {
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+
+    .toc-item:hover {
+      background: #eff6ff;
+      color: var(--primary);
+    }
+
+    .toc-item.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* 響應式優化 */
+    @media (max-width: 768px) {
+      .deck-container {
+        min-height: auto;
+      }
+      .slide {
+        padding: 24px 20px;
+      }
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .slide-title {
+        font-size: 1.45rem;
+      }
+      .cover-title {
+        font-size: 1.85rem;
+      }
+      .brand-title {
+        display: none;
+      }
+      .slide-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部控制面板 -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">AGY EDU</div>
+      <div class="brand-title">高中升大學多元入學完全解析</div>
+    </div>
+    <div class="nav-controls">
+      <button class="btn" id="btn-toc" title="瀏覽所有頁面目錄">📑 目錄</button>
+      <button class="btn" id="btn-prev" title="上一頁 (快捷鍵：← 或 PageUp)">◀ 上一頁</button>
+      <span class="slide-counter" id="slide-indicator">1 / 12</span>
+      <button class="btn btn-primary" id="btn-next" title="下一頁 (快捷鍵：→ 或空白鍵)">下一頁 ▶</button>
+      <button class="btn" id="btn-fullscreen" title="切換全螢幕模式">⛶ 全螢幕</button>
+    </div>
+  </header>
+
+  <!-- 目錄抽屜 (Modal) -->
+  <div class="modal-overlay" id="toc-modal">
+    <div class="modal-box">
+      <div class="modal-title">
+        <span>簡報章節目錄</span>
+        <button class="btn" id="btn-close-toc" style="padding:4px 8px;">✕</button>
+      </div>
+      <ul class="toc-list" id="toc-container">
+        <!-- 由 JavaScript 動態生成目錄項目 -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- 簡報主舞台 -->
+  <main>
+    <div class="deck-container">
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+
+      <!-- Slide 1: 封面 -->
+      <section class="slide cover-slide active" data-title="首頁：116升學完全指南">
+        <div class="slide-badge badge-amber">116 學年度考生與家長必備指南</div>
+        <h1 class="cover-title">新手家長升學導航<br>高中升大學四大管道與重要制度完全解析</h1>
+        <p class="cover-subtitle">不需艱澀的統計術語與複雜落點！用最直白親切的方式，帶您全面弄懂繁星、申請、四技與分發的遊戲規則、關鍵時程與選填避坑要訣。</p>
+        
+        <div class="cover-highlights">
+          <div class="cover-pill">🌟 繁星推薦（在校優勢）</div>
+          <div class="cover-pill">🎯 個人申請（多元展現）</div>
+          <div class="cover-pill">🚀 四技申請（科大雙軌）</div>
+          <div class="cover-pill">📊 分發入學（筆試翻盤）</div>
+          <div class="cover-pill">🛡️ 跨管道防踩雷</div>
+        </div>
+
+        <button class="btn btn-primary" id="start-btn" style="padding: 12px 28px; font-size: 1.05rem;">
+          開始閱讀簡報（按空白鍵或點擊） ▶
+        </button>
+
+        <div class="slide-footer" style="margin-top: 30px;">
+          <div style="color: var(--text-muted); font-size: 0.85rem;">
+            本簡報依據教育部核定之 116 學年度官方升學簡章總則編譯（繁星推薦、申請入學、四技申請、大考中心測驗簡章與分發入學總則）
+          </div>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 知識庫核心架構：wiki/comparisons/all_channels_overview.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 2: 全景時間軸與架構 -->
+      <section class="slide" data-title="升學全景：考招分離與時間軸">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge">體系總覽</div>
+            <h2 class="slide-title">升學全景：一張圖看懂「考招分離」與高三時序</h2>
+            <div class="slide-subtitle">了解高中升大學「考試」與「招生管道」的對接節奏</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="alert-box alert-info">
+            <div class="alert-icon">💡</div>
+            <div class="alert-content">
+              <h4>什麼是「考招分離」？</h4>
+              <p>臺灣現行制度下，「大考中心」只負責辦理統一考試（高中英聽、學測、分科測驗）；而「大學招聯會」與「技專聯合會」則負責各管道之招生甄選與分發。考試分數是各階段的入場券，如何妥善運用於合適管道才是決勝關鍵！</p>
+            </div>
+          </div>
+
+          <div class="grid-4" style="margin-top: 10px;">
+            <div class="card" style="border-top: 4px solid #3b82f6;">
+              <div class="card-title">① 繁星推薦</div>
+              <p><strong>時程：</strong>高三 3 月中放榜</p>
+              <p><strong>關鍵：</strong>在校前 20%~50% ＋ 學測門檻</p>
+              <p><strong>特點：</strong>免二階免面試，最早確定大學！</p>
+            </div>
+            <div class="card" style="border-top: 4px solid #0d9488;">
+              <div class="card-title">② 申請入學</div>
+              <p><strong>時程：</strong>3月報名 ➔ 6月中分發</p>
+              <p><strong>關鍵：</strong>學測篩選 ＋ 學習歷程/面試</p>
+              <p><strong>特點：</strong>最多填 6 校系，多元適性選才</p>
+            </div>
+            <div class="card" style="border-top: 4px solid #f59e0b;">
+              <div class="card-title">③ 四技申請</div>
+              <p><strong>時程：</strong>3月報名 ➔ 5~6月報到</p>
+              <p><strong>關鍵：</strong>學測成績（最多採4科）</p>
+              <p><strong>特點：</strong>獨立額外 6 志願，跨足科大名校</p>
+            </div>
+            <div class="card" style="border-top: 4px solid #ef4444;">
+              <div class="card-title">④ 分發入學</div>
+              <p><strong>時程：</strong>7月分科 ➔ 8月中放榜</p>
+              <p><strong>關鍵：</strong>分科測驗 ＋ 學測轉60級分</p>
+              <p><strong>特點：</strong>純筆試、免面試、最多選填 100 志願</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">提示：四大管道各有對應專長學生，提早規劃能有效減輕孩子高三心理壓力。</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 對應知識庫：wiki/rules/entrance_examinations.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: 管道一：繁星推薦 -->
+      <section class="slide" data-title="管道一：大學繁星推薦">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge badge-green">第一管道</div>
+            <h2 class="slide-title">大學繁星推薦：在校成績前段生的及早定錨之路</h2>
+            <div class="slide-subtitle">落實高中均質化與就近入學，讓三年認真穩定的學生提早圓夢</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">📌 核心遊戲規則</div>
+              <ul>
+                <li><strong>學校統一推薦</strong>：每所高中每學群至多推薦 2 名（限全程就讀國內同一高中的應屆畢業生）。</li>
+                <li><strong>志願選填限制</strong>：每位學生<strong>只能推薦 1 所大學的 1 個學群</strong>（學群內可填該大學多個志願學系）。</li>
+                <li><strong>八大學群劃分</strong>：
+                  <ul>
+                    <li>第 1~7 類：文、理、工、醫農、管、社、藝等（<strong>免面試，3月中直接放榜分發</strong>）。</li>
+                    <li>第 8 類：醫學系與牙醫系（需經一階篩選，5~6月參加<strong>二階面試</strong>）。</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <div class="card-title">⚖️ 分發比序與重要特點</div>
+              <ul>
+                <li><strong>第一關（比在校趴數）</strong>：全校學業成績前 20%、30%、40% 或 50% 排名百分比優先比序。</li>
+                <li><strong>第二關（比考科成績）</strong>：達校系檢定後，依校系自訂比序項目（學測單科或在校單科）逐項排比。</li>
+                <li><strong>高中優先權保障（第一輪分發）</strong>：每所大學對同一所高中在同一學群以錄取 1 名為限，保障各高中皆有上榜機會！</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="alert-box alert-danger">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-content">
+              <h4>家長必知重大天條（錄取即禁報申請）：</h4>
+              <p>繁星第 1~7 類一旦在 3 月中獲分發錄取，<strong>無論考生後來放棄與否，一律絕對禁止報名當屆大學「申請入學」！</strong>因此，繁星所選填的校系，必須是孩子真心願意就讀的科系，絕不可為了「求有」而盲目選填！</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">適合對象：高一高二平時成績極度穩定、不偏科的在校前 20%~50% 學生。</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 對應知識庫：wiki/channels/star.md｜wiki/rules/star_screening.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: 管道二：申請入學 -->
+      <section class="slide" data-title="管道二：大學申請入學">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge">第二管道</div>
+            <h2 class="slide-title">大學申請入學：適性揚才的多元探索主戰場</h2>
+            <div class="slide-subtitle">名額最多、涵蓋最廣的升學主幹道（每生至多 6 個校系志願）</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="card">
+              <div class="card-title">① 6 個志願自主選填</div>
+              <p>考生個人自由報名，至多可選填 <strong>6 個大學校系</strong>。</p>
+              <p>須留意各大學校內自訂上限（多數大學限制單一考生至多申請該校 3~5 個學系）。</p>
+            </div>
+            <div class="card">
+              <div class="card-title">② 兩階段甄選設計</div>
+              <p><strong>第一階段</strong>：學測成績檢定與倍率篩選（由大倍率篩至小倍率，約招生名額 3 倍人數進入二階）。</p>
+              <p><strong>第二階段</strong>：大學自辦指定項目甄試（面試、筆試、實作與學習歷程檔案審查）。</p>
+            </div>
+            <div class="card">
+              <div class="card-title">③ 志願序統一分發</div>
+              <p>考生在各校獲得「正取」或「備取」後，上網登記<strong>就讀志願序</strong>。</p>
+              <p>由甄選委員會電腦系統自動媒合，每位考生<strong>一人至多僅分發至一個校系</strong>，徹底杜絕重榜浪費。</p>
+            </div>
+          </div>
+
+          <div class="alert-box alert-warning">
+            <div class="alert-icon">📝</div>
+            <div class="alert-content">
+              <h4>108 課綱「學習歷程檔案」扮演什麼角色？</h4>
+              <p>在第二階段評分中，學習歷程與備審資料綜合審查<strong>占比至少 50%</strong>。大學重視的是學生的「修課軌跡、探究與實作成果、多元表現及自述心得」，而非華麗包裝或證照堆疊。展現學術熱情與反思是二階致勝關鍵！</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">重要時程：3月下旬公布一階篩選名單 ➔ 5月中下旬二階甄試 ➔ 6月中旬公告統一分發結果。</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 對應知識庫：wiki/channels/application.md｜wiki/rules/unified_distribution.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: 管道三：四技申請 -->
+      <section class="slide" data-title="管道三：科技校院四技申請">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge badge-amber">第三管道（加分雙軌）</div>
+            <h2 class="slide-title">科技校院四技申請：普通高中生的「額外 6 志願」</h2>
+            <div class="slide-subtitle">用學測成績跨足頂尖科大，免考統測的極佳升學防護網</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">🌟 高中生專屬的雙軌升學優勢</div>
+              <ul>
+                <li><strong>高中生限定</strong>：由技專招聯會主辦，專供公私立普通高中學生跨考技職校院。</li>
+                <li><strong>獨立的 6 個志願</strong>：一般大學填 6 個志願，四技申請<strong>可再額外填 6 個科大系組</strong>，合計最多 <strong>12 個志願</strong>！</li>
+                <li><strong>免考統測</strong>：完全採計 1 月份的學科能力測驗（學測）成績（最多採計 4 科）。</li>
+                <li><strong>實務導向名校</strong>：如臺科大、北科大、雲科大、高科大及長庚、嘉藥等醫護藥學系，就業起薪與業界口碑極強。</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <div class="card-title">🔍 甄試方式與報到流程差異</div>
+              <ul>
+                <li><strong>兩階段甄試</strong>：一階採學測倍率篩選（約 3~6 倍率或至多 60 人進入二階），二階進行審查與面試。</li>
+                <li><strong>放榜與報到機制</strong>：
+                  <ul>
+                    <li>科技校院採<strong>各校各自放榜與報到</strong>（非一般大學之統一志願序分發）。</li>
+                    <li>考生若獲多校錄取，需擇一校辦理報到。</li>
+                  </ul>
+                </li>
+                <li><strong>報到後排他規定</strong>：若已向科大報到且未在規定期限內書面放棄，<strong>一律不得參加 7 月之大學分發入學</strong>！</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="alert-box alert-success">
+            <div class="alert-icon">💡</div>
+            <div class="alert-content">
+              <h4>家長策略錦囊：</h4>
+              <p>如果孩子對資工、電子、機械、工業設計、建築、護理或藥學感興趣，強烈建議將四技申請納入佈局！頂尖科大的硬體資源與業界長約實習機會豐富，是許多務實家庭的優質首選。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">提醒：四技二階面試可能與一般大學面試撞期，選填時須查對各校公告日期。</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 對應知識庫：wiki/channels/tech_application.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: 管道四：大學分發入學 -->
+      <section class="slide" data-title="管道四：大學分發入學">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge badge-red">第四管道（終極翻盤）</div>
+            <h2 class="slide-title">大學分發入學：大考實力派的「百志願」大翻盤</h2>
+            <div class="slide-subtitle">純筆試客觀分發、免面試、免學習歷程，志願最多高達 100 個</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="alert-box alert-info" style="margin-top:0;">
+            <div class="alert-icon">ℹ️</div>
+            <div class="alert-content">
+              <h4>【依據已公告之 116 學年度正式簡章】：</h4>
+              <p>大學分發入學招生制度成熟完備，純筆試選才、電腦客觀分發，名額流動性最大，為高中升大學多元入學體系之最後關鍵主力管道。</p>
+            </div>
+          </div>
+
+          <div class="grid-3" style="margin-top: 10px;">
+            <div class="card">
+              <div class="card-title">🎯 純筆試成績選才</div>
+              <p><strong>完全不辦理二階甄試</strong>！</p>
+              <p><strong>不審查學習歷程檔案</strong>、<strong>無面試口試負擔</strong>。由電腦依照測驗成績客觀排序分發，最適合不善言詞或備審薄弱的筆試高手。</p>
+            </div>
+            <div class="card">
+              <div class="card-title">🌊 名額蓄水池效應</div>
+              <p>繁星推薦與申請入學各大學校系未足額錄取、或錄取生依限放棄後的缺額，<strong>全數回流至分發入學</strong>！</p>
+              <p>各頂尖校系在分發入學的名額往往大增，落點變數多、逆轉勝空間極大。</p>
+            </div>
+            <div class="card">
+              <div class="card-title">💯 100 個志願填到滿</div>
+              <p>每位考生至多可選填 <strong>100 個志願</strong>！</p>
+              <p>建議採「30 夢幻 ＋ 40 穩健 ＋ 30 保底」的黃金配比，幾乎可以達到 100% 杜絕非自願落榜。</p>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top: 10px;">
+            <div class="card-title">⚙️ 分發四大關卡：檢定 ➔ 最低登記 ➔ 採計加權 ➔ 同分參酌</div>
+            <p style="font-size: 0.9rem;">採計 3~5 科（分科測驗至少 1 科，學測至多 4 科）。各科換算為 60 級分加權後比分；若遇同分爭取最後名額，依校系指定科目順序先比 60 級分，再比原始卷面實得分數，若依然同分則<strong>一律增額錄取</strong>，絕無抽籤淘汰！</p>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">時程：7月中分科測驗 ➔ 7月下旬登記繳費與選填 ➔ 8月中旬放榜。</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 對應知識庫：wiki/channels/distribution.md｜wiki/rules/distribution_placement.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7: 四大管道全景大比拼 -->
+      <section class="slide" data-title="管道對照：四大主流管道大比拼">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge">全景比較</div>
+            <h2 class="slide-title">四大主流管道大比拼：關鍵維度全方位對照</h2>
+            <div class="slide-subtitle">一眼看清不同管道的資格、志願數、考科要求與時序差異</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>比較項目</th>
+                  <th style="color:#2563eb;">大學繁星推薦</th>
+                  <th style="color:#0d9488;">大學申請入學</th>
+                  <th style="color:#d97706;">科技校院四技申請</th>
+                  <th style="color:#dc2626;">大學分發入學</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>主辦單位</strong></td>
+                  <td>大學甄選入學委員會</td>
+                  <td>大學甄選入學委員會</td>
+                  <td>技專招生委員會聯合會</td>
+                  <td>大學考試分發委員會</td>
+                </tr>
+                <tr>
+                  <td><strong>報名資格</strong></td>
+                  <td>應屆畢業生且在校前 20%~50%</td>
+                  <td>高中應屆/已畢業/同等學力</td>
+                  <td>普通高中應屆/已畢業生</td>
+                  <td>高中應屆/已畢業/同等學力</td>
+                </tr>
+                <tr>
+                  <td><strong>志願數量</strong></td>
+                  <td><strong>1 所大學 1 個學群</strong></td>
+                  <td><strong>至多 6 個校系</strong></td>
+                  <td><strong>至多 6 個科大系組</strong>（獨立）</td>
+                  <td><strong>至多 100 個志願</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>考科採計</strong></td>
+                  <td>學測（檢定門檻與比序）</td>
+                  <td>學測（篩選門檻與二階加權）</td>
+                  <td>學測（篩選門檻，最多4科）</td>
+                  <td><strong>分科（至少1科）＋學測轉60級分</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>第二階段甄試</strong></td>
+                  <td>第 1~7 類<strong>免甄試</strong>（醫牙需面試）</td>
+                  <td><strong>有</strong>（面試、筆試、實作）</td>
+                  <td><strong>有</strong>（審查、面試、實作）</td>
+                  <td><strong>完全沒有二階甄試</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>學習歷程採計</strong></td>
+                  <td>完全不採計</td>
+                  <td><strong>關鍵採計（占比 ≥ 50%）</strong></td>
+                  <td>第二階段備審審查採計</td>
+                  <td>完全不採計</td>
+                </tr>
+                <tr>
+                  <td><strong>放榜時程</strong></td>
+                  <td><strong>3 月中旬</strong></td>
+                  <td><strong>6 月中旬</strong></td>
+                  <td><strong>5 月下旬 ~ 6 月初</strong></td>
+                  <td><strong>8 月中旬</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>錄取後排他性</strong></td>
+                  <td>錄取即<strong>禁報申請入學</strong></td>
+                  <td>分發錄取未放棄<strong>禁報分發</strong></td>
+                  <td>報到未放棄<strong>取消分發資格</strong></td>
+                  <td>聯招最終管道（放榜即定局）</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">總結：沒有絕對最好的管道，只有最適合孩子特質與成績分佈的管道！</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 對應知識庫：wiki/comparisons/all_channels_overview.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 8: 大考三大測驗與計分秘笈 -->
+      <section class="slide" data-title="測驗解密：英聽、學測與分科計分">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge badge-purple">測驗計分</div>
+            <h2 class="slide-title">大考三大測驗與計分秘笈：15 級分如何轉 60 級分？</h2>
+            <div class="slide-subtitle">弄懂英聽、學測與分科測驗的計分規則與級距公式</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="card">
+              <div class="card-title">① 高中英聽測驗</div>
+              <p><strong>時程：</strong>高三上 10月 & 12月（兩次擇優）</p>
+              <p><strong>等級：</strong>A 級、B 級、C 級、F 級</p>
+              <p><strong>效期：</strong>成績保留 3 年，主要作為繁星、申請、分發之校系檢定門檻。</p>
+            </div>
+            <div class="card">
+              <div class="card-title">② 學測（15 級分制）</div>
+              <p><strong>時程：</strong>高三寒假 1 月下旬（考 3 天）</p>
+              <p><strong>考科：</strong>國、英、數A、數B、社、自（自由選考）</p>
+              <p><strong>級距公式：</strong>以各科前 1% 考生平均原始得分除以 15 作為級距。最高 15 級分，公布五標。</p>
+            </div>
+            <div class="card">
+              <div class="card-title">③ 分科測驗（60 級分制）</div>
+              <p><strong>時程：</strong>高三畢業後 7 月中旬（考 2 天）</p>
+              <p><strong>考科：</strong>數甲、數乙、物、化、生、歷、地、公（<strong>不考國文與英文！</strong>）</p>
+              <p><strong>級距公式：</strong>各科前 1% 平均原始分除以 60。最高 60 級分。</p>
+            </div>
+          </div>
+
+          <div class="alert-box alert-info">
+            <div class="alert-icon">🧮</div>
+            <div class="alert-content">
+              <h4>【家長必懂核心解密】：學測 15 級分在分發入學如何變成 60 級分？</h4>
+              <p><strong>絕對不是單純乘以 4（× 4）！</strong><br>
+              大考中心是調出考生的<strong>「學測原始得分」</strong>，以當次學測前 1% 平均分除以 60 作為新級距，重新精細換算為 1~60 級分。這代表原本在學測同為 15 級分的學生，到了分發會被細分為 57~60 級分；同為 14 級分者被細分成 53~56 級分。原始考卷分數越高，在分發入學越吃香！</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">重要提醒：分科測驗不考國文英文，分發若採計國英，直接沿用學測成績換算的 60 級分！高三上學測國英千萬不能放。</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 對應知識庫：wiki/rules/entrance_examinations.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 9: 116 試場新制與重大防弊提醒 -->
+      <section class="slide" data-title="試場紀律：116學年度大考重大新制">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge badge-red">法規紅線</div>
+            <h2 class="slide-title">116 試場紀律升級：嚴禁「智慧眼鏡」與三大違規地雷</h2>
+            <div class="slide-subtitle">辛辛苦苦苦讀三年，千萬不要因為一時疏忽被扣分或零分處分！</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="step-list">
+            <div class="step-item" style="border-left: 6px solid var(--danger);">
+              <div class="step-num" style="background:var(--danger)">1</div>
+              <div class="step-text">
+                <h5 style="color:var(--danger)">【重大新制】嚴格禁止佩戴或攜帶「智慧眼鏡（Smart Glasses）」入場</h5>
+                <p>116 學年度考試簡章明文新增：具錄影、照相、通訊或顯示功能之智慧眼鏡、智慧穿戴裝置，若佩戴或攜帶入試場座次，<strong>一律認定為重大舞弊，該節成績以「零分」計算</strong>！情節嚴重者取消全部科目資格。</p>
+              </div>
+            </div>
+
+            <div class="step-item" style="border-left: 6px solid var(--accent);">
+              <div class="step-num" style="background:var(--accent)">2</div>
+              <div class="step-text">
+                <h5 style="color:#b45309">【常見致命疏失】答題卷未簽名：直接扣 1 級分！</h5>
+                <p>學測與分科測驗全面採用「卷卡合一」答題卷。考試開始鈴響後，考生<strong>必須在「確認後考生簽名」欄以正楷簽全名</strong>。每節考試若忘記簽名，該科直接被扣 1 級分（學測扣 1 級分、分科扣 1 級分），在分分必爭的競爭中極度致命！</p>
+              </div>
+            </div>
+
+            <div class="step-item" style="border-left: 6px solid var(--primary-light);">
+              <div class="step-num" style="background:var(--primary-light)">3</div>
+              <div class="step-text">
+                <h5 style="color:var(--primary)">【證件有效性陷阱】學生證「無論有沒有照片」都不是有效證件！</h5>
+                <p>應試<strong>法定有效證件正本</strong>僅限：國民身分證、有照片健保卡、駕照、護照、身心障礙證明。<strong>「高中學生證」及「無照片健保卡」一律不被接受</strong>！未攜帶且未於該節結束前送達者將依規定扣分。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-box alert-warning" style="margin-top: 10px;">
+            <div class="alert-icon">⏰</div>
+            <div class="alert-content">
+              <h4>手錶請準備傳統指針型機械錶：</h4>
+              <p>智慧型手錶（Apple Watch、Garmin等）、智慧手環、藍牙耳機均嚴禁攜帶入座。一般電子錶請務必關閉整點報時與鬧鐘聲響，鈴響即視同違規扣分。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">家長考前檢查清單：有效證件、一般手錶、黑色2B鉛筆、黑色墨水筆、修正帶。</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 對應知識庫：wiki/rules/entrance_examinations.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 10: 跨管道排他與放棄時限 -->
+      <section class="slide" data-title="防踩雷：跨管道排他與放棄時限">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge badge-red">防踩雷指南</div>
+            <h2 class="slide-title">跨管道排他禁令：千萬別錯過聲明放棄時限！</h2>
+            <div class="slide-subtitle">升學制度環環相扣，一旦違規將被取消錄取或分發資格</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">🚫 繁星推薦錄取的「絕對排他性」</div>
+              <p><strong>第 1 至 7 類學群錄取生</strong>：</p>
+              <ul>
+                <li>3 月中放榜分發錄取後，<strong>無論放棄與否，一律不得報名「申請入學」及「四技申請」</strong>！</li>
+                <li>若想轉戰 7 月分發入學，必須於<strong>3月中旬（放榜後約 5 日內）</strong>在甄選會網站完成「網路聲明放棄」（確切截止時間以當年度甄選會日程表為準）。</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <div class="card-title">⚠️ 申請入學分發與科大報到的放棄規定</div>
+              <p><strong>申請入學統一分發錄取生</strong>：</p>
+              <ul>
+                <li>6月中旬分發錄取後若想參加 7 月分發入學，必須於<strong>6月中旬（放榜後約 4 日內）</strong>在甄選會網站完成網路放棄手續（確切截止時間以當年度甄選會日程表為準）。</li>
+              </ul>
+              <p style="margin-top:8px;"><strong>四技申請錄取報到生</strong>：</p>
+              <ul>
+                <li>已向科大報到者，若欲參加大學分發入學，必須依各科大簡章規定期限以<strong>書面聲明放棄</strong>並取得受領證明。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="alert-box alert-danger">
+            <div class="alert-icon">🚨</div>
+            <div class="alert-content">
+              <h4>大學分發入學的「13 項前置管道排他名單」：</h4>
+              <p>考分會簡章明訂，凡在「特殊選才、大學繁星、大學申請、四技特殊選才、技優甄審、四技甄選、四技申請、科大繁星、身障甄試、運優甄審、師保生、醫事公費生、軍校正期班」等 13 項前置管道獲得錄取報到且<strong>未依法定程序依限聲明放棄者</strong>，一律取消大學分發入學資格！雙重錄取查獲必撤銷。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">切記：網路聲明放棄一旦確認送出，法律效力生效，絕對無法要求撤回！</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 對應知識庫：wiki/rules/channel_restrictions.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 11: 家長輔導策略與決策指引 -->
+      <section class="slide" data-title="決策樹：如何為孩子挑選合適管道？">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge badge-green">決策指南</div>
+            <h2 class="slide-title">家長輔導指南：如何根據孩子特質制定升學策略？</h2>
+            <div class="slide-subtitle">客觀評估在校排名、大考實力與個性，找到阻力最小的致勝路徑</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="card" style="border-top: 4px solid #2563eb;">
+              <div class="card-title">類型 A：在校表現亮眼型</div>
+              <p><strong>學生特質：</strong>平時作業考試認真、高一高二在校排名前 20%~50%，不偏科。</p>
+              <p><strong>首選管道：</strong><strong style="color:#2563eb;">繁星推薦</strong></p>
+              <p><strong>家長行動：</strong></p>
+              <ul>
+                <li>確認孩子真心喜愛的校系（避免錄取後後悔）。</li>
+                <li>檢視學測檢定門檻是否穩健達標。</li>
+                <li>若順利上榜，高三下可及早規劃大學先修與英文檢定。</li>
+              </ul>
+            </div>
+
+            <div class="card" style="border-top: 4px solid #0d9488;">
+              <div class="card-title">類型 B：多元興趣展現型</div>
+              <p><strong>學生特質：</strong>性向明確、溝通表達良好、課外活動豐富、學習歷程檔案扎實。</p>
+              <p><strong>首選管道：</strong><strong style="color:#0d9488;">申請入學 ＋ 四技申請</strong></p>
+              <p><strong>家長行動：</strong></p>
+              <ul>
+                <li>善用「6 + 6」最多 12 個志願跨體系投件。</li>
+                <li>協助孩子模擬二階面試，練習具體闡述學習反思。</li>
+                <li>提前協調各校二階甄試日期，避免交通行程衝突。</li>
+              </ul>
+            </div>
+
+            <div class="card" style="border-top: 4px solid #dc2626;">
+              <div class="card-title">類型 C：筆試爆發實力型</div>
+              <p><strong>學生特質：</strong>在校成績普通、不擅長面試、但加深加廣科目強，大考衝刺潛力高。</p>
+              <p><strong>首選管道：</strong><strong style="color:#dc2626;">大學分發入學</strong></p>
+              <p><strong>家長行動：</strong></p>
+              <ul>
+                <li>學測國文英文奠定紮實基礎（分科測驗不再施測）。</li>
+                <li>全心衝刺 7 月分科測驗加深加廣科目。</li>
+                <li>分發善用 100 個志願，做好夢幻、穩健、保底三重防護。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="alert-box alert-success" style="margin-top: 10px;">
+            <div class="alert-icon">🤝</div>
+            <div class="alert-content">
+              <h4>家長最重要的角色不是「幫孩子做決定」，而是「提供客觀情報與心理後盾」：</h4>
+              <p>升學是一場馬拉松，尊重孩子的志趣熱情，陪孩子客觀盤點優勢、清楚法規界限，就是最棒的支持！</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">策略建議：申請入學適度保底；若未達心目中最理想校系，勇於轉戰分發也是極佳策略。</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 對應知識庫：wiki/comparisons/star_vs_application.md
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 12: 結語與 Wiki 索引 -->
+      <section class="slide" data-title="結語：知識庫索引與後續指引">
+        <div class="slide-header">
+          <div>
+            <div class="slide-badge badge-amber">完整知識庫</div>
+            <h2 class="slide-title">結語：歡迎隨時查閱升學 Wiki 知識庫深度條目</h2>
+            <div class="slide-subtitle">所有簡報內容均來自教育部核定之官方招生簡章，透明詳實、隨時調閱</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">📚 管道深度解析條目（知識庫文件）</div>
+              <div class="topic-card-item">
+                <strong>大學繁星推薦總則</strong><span class="topic-path-badge">wiki/channels/star.md</span>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:2px;">八大學群劃分、在校推薦比例、第一輪與第二輪分發比序機制</p>
+              </div>
+              <div class="topic-card-item">
+                <strong>大學申請入學總則</strong><span class="topic-path-badge">wiki/channels/application.md</span>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:2px;">6校系志願選填限制、一階二階甄選時程、弱勢專案與離島培育計畫</p>
+              </div>
+              <div class="topic-card-item">
+                <strong>科技校院四技申請</strong><span class="topic-path-badge">wiki/channels/tech_application.md</span>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:2px;">高中生獨立 6 志願、學測採計、跨技職科大實務雙軌管道</p>
+              </div>
+              <div class="topic-card-item">
+                <strong>大學分發入學總則</strong><span class="topic-path-badge">wiki/channels/distribution.md</span>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:2px;">100 志願海選、免二階免歷程、名額回流（依據 116 學年度正式簡章）</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">⚖️ 核心規則與計分機制條目</div>
+              <div class="topic-card-item">
+                <strong>大考中心測驗與計分</strong><span class="topic-path-badge">wiki/rules/entrance_examinations.md</span>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:2px;">英聽/學測/分科三大考試、15轉60級分級距公式、116智慧眼鏡禁令</p>
+              </div>
+              <div class="topic-card-item">
+                <strong>分發登記與同分參酌</strong><span class="topic-path-badge">wiki/rules/distribution_placement.md</span>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:2px;">校系檢定/加權/原始分比序/增額錄取機制、特種生加分優待</p>
+              </div>
+              <div class="topic-card-item">
+                <strong>跨管道排他與放棄限制</strong><span class="topic-path-badge">wiki/rules/channel_restrictions.md</span>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:2px;">13 項前置排他名單、繁星禁報申請、放棄法定時程與不可逆規範</p>
+              </div>
+              <div class="topic-card-item">
+                <strong>四大管道全景比較表</strong><span class="topic-path-badge">wiki/comparisons/all_channels_overview.md</span>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:2px;">繁星 vs 申請 vs 四技 vs 分發橫向全對照矩陣與家長決策樹</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-box alert-info" style="margin-top: 15px;">
+            <div class="alert-icon">🎓</div>
+            <div class="alert-content">
+              <h4>祝所有 116 學年度考生與家長：</h4>
+              <p>選其所愛、愛其所選！掌握資訊、善用制度，順利邁向理想的大學生活！</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span style="color:var(--text-muted)">本簡報檔為獨立離線 HTML，無需網路連線，可直接雙擊瀏覽器開啟播放。</span>
+          <div class="wiki-source-tag">
+            <span class="icon">📖</span> 知識庫總索引：index.md
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    // 簡報邏輯控制程式碼
+    (function() {
+      const slides = document.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      let currentSlide = 0;
+
+      const progressFill = document.getElementById('progress-fill');
+      const slideIndicator = document.getElementById('slide-indicator');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnToc = document.getElementById('btn-toc');
+      const btnCloseToc = document.getElementById('btn-close-toc');
+      const tocModal = document.getElementById('toc-modal');
+      const tocContainer = document.getElementById('toc-container');
+      const startBtn = document.getElementById('start-btn');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+
+      // 初始化目錄列表
+      slides.forEach((slide, idx) => {
+        const title = slide.getAttribute('data-title') || `第 ${idx + 1} 頁`;
+        const li = document.createElement('li');
+        li.className = `toc-item ${idx === 0 ? 'active' : ''}`;
+        li.innerHTML = `<span>${idx + 1}. ${title}</span><span>➔</span>`;
+        li.addEventListener('click', () => {
+          goToSlide(idx);
+          closeToc();
+        });
+        tocContainer.appendChild(li);
+      });
+
+      function updateSlideUI() {
+        slides.forEach((slide, idx) => {
+          slide.classList.toggle('active', idx === currentSlide);
+        });
+
+        // 更新進度條
+        const progressPct = ((currentSlide + 1) / totalSlides) * 100;
+        progressFill.style.width = progressPct + '%';
+
+        // 更新頁數顯示
+        slideIndicator.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+        // 更新按鈕狀態
+        btnPrev.disabled = (currentSlide === 0);
+        btnPrev.style.opacity = (currentSlide === 0) ? '0.5' : '1';
+        btnNext.disabled = (currentSlide === totalSlides - 1);
+        btnNext.style.opacity = (currentSlide === totalSlides - 1) ? '0.5' : '1';
+
+        // 更新目錄中的當前高亮
+        const tocItems = document.querySelectorAll('.toc-item');
+        tocItems.forEach((item, idx) => {
+          item.classList.toggle('active', idx === currentSlide);
+        });
+      }
+
+      function goToSlide(n) {
+        if (n >= 0 && n < totalSlides) {
+          currentSlide = n;
+          updateSlideUI();
+        }
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+          goToSlide(currentSlide + 1);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 0) {
+          goToSlide(currentSlide - 1);
+        }
+      }
+
+      function openToc() {
+        tocModal.classList.add('open');
+      }
+
+      function closeToc() {
+        tocModal.classList.remove('open');
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.log("全螢幕請求被拒絕:", err);
+          });
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+
+      // 事件監聽綁定
+      btnPrev.addEventListener('click', prevSlide);
+      btnNext.addEventListener('click', nextSlide);
+      btnToc.addEventListener('click', openToc);
+      btnCloseToc.addEventListener('click', closeToc);
+      tocModal.addEventListener('click', (e) => {
+        if (e.target === tocModal) closeToc();
+      });
+      if (startBtn) startBtn.addEventListener('click', nextSlide);
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      // 鍵盤導航監聽
+      window.addEventListener('keydown', (e) => {
+        if (tocModal.classList.contains('open')) {
+          if (e.key === 'Escape') closeToc();
+          return;
+        }
+
+        switch(e.key) {
+          case 'ArrowRight':
+          case 'PageDown':
+          case ' ': // 空白鍵
+            e.preventDefault();
+            nextSlide();
+            break;
+          case 'ArrowLeft':
+          case 'PageUp':
+            e.preventDefault();
+            prevSlide();
+            break;
+          case 'Home':
+            e.preventDefault();
+            goToSlide(0);
+            break;
+          case 'End':
+            e.preventDefault();
+            goToSlide(totalSlides - 1);
+            break;
+          case 'Escape':
+            closeToc();
+            break;
+        }
+      });
+
+      // 手機與觸控螢幕滑動支援
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      window.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, false);
+
+      window.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, false);
+
+      function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          nextSlide(); // 向左滑動 ➔ 下一頁
+        }
+        if (touchEndX > touchStartX + 50) {
+          prevSlide(); // 向右滑動 ➔ 上一頁
+        }
+      }
+
+      // 初始化顯示
+      updateSlideUI();
+    })();
+  </script>
+</body>
+</html>
